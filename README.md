@@ -86,3 +86,10 @@ Use POST /ask/evaluate-claim.
 Input the client_id and submission_date associated with a claim file.
 
 The AI will compare the claim context against the master policy.
+
+🗺️ Roadmap
+Phase 1: Local RAG with Ollama (Current).
+
+Phase 2: Cloud Migration (AWS S3 & Pinecone).
+
+Phase 3: Multi-Agent Orchestration for automated claim adjudication
