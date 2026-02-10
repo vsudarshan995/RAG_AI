@@ -1,95 +1,34 @@
-# InsuranceRAG: AI-Powered Policy Auditor & Claim Evaluator
+# InsuranceRAG: Multi-Agent Policy Auditor & Claim Evaluator
 
-InsuranceRAG is a specialized Retrieval-Augmented Generation (RAG) system designed to automate the cross-referencing of insurance claims against master policy documents. It features a dual-collection architecture, automated AI classification of documents, and a modular backend capable of swapping between local (Ollama) and cloud (OpenAI) LLMs.
+InsuranceRAG is an advanced Agentic Retrieval-Augmented Generation (RAG) system. It utilizes a **Multi-Agent Orchestration** layer built on **LangGraph** to automate the complex process of auditing insurance claims against master policy documents and historical data.
+
+## 🤖 Multi-Agent Intelligence
+
+Unlike standard RAG systems that perform a single search, InsuranceRAG uses a state-machine workflow to coordinate specialized agents:
+
+* **Initialization Agent**: Sets up the investigation instance and initializes a permanent audit trail.
+* **Policy Selector Agent**: Uses semantic search to retrieve specific clauses from the `policy_master_collection`.
+* **History Investigator Agent**: Analyzes the client's past claims in the `claims_collection` to identify behavioral patterns or potential risks.
+* **Compliance Evaluator Agent**: Applies organizational Standard Operating Procedures (SOPs), such as police report requirements and submission limits.
+* **Synthesis Orchestrator**: Evaluates the findings from all agents to provide a final **APPROVED** or **DENIED** verdict.
+* **Archive Agent**: Commits the final decision and full reasoning to the `evaluation_audit_log` for legal compliance.
 
 ## 🚀 Key Features
 
-* **Dual-Collection Architecture**: Separates immutable Master Policies from Client Claims to prevent data contamination.
-* **Cognitive Intake (AI Classification)**: Automatically identifies claim types (Motor, Life, Medical) by comparing new submissions against existing master policy definitions.
-* **Modular LLM Core**: Easily swap between local models like **Llama 3 (via Ollama)** and cloud models like **GPT-4o**.
-* **Automated Watcher**: A background processing service that monitors storage folders, handles file-locking on Windows, and organizes indexed files into `processed/` subfolders.
-* **Strict Temporal Filtering**: Filters claim evaluations by `client_id` and `submission_date` to ensure contextually accurate audits.
+* **Agentic Workflow**: Managed by LangGraph for structured, multi-step decision-making.
+* **Dual-Collection Architecture**: Strict separation of immutable Master Policies from Client Claims to prevent data contamination.
+* **Semantic Ingestion**: Uses a `SemanticChunker` to split documents based on meaning and topic shifts rather than fixed character counts.
+* **Real-Time Progress Visualization**: A dedicated FastAPI endpoint (`/preview/flow/{id}`) renders a live Mermaid.js chart of the agentic process.
+* **Automated Watcher**: A background service that monitors storage folders, manages Windows file-locks, and triggers AI-based classification upon file detection.
 
 ## 📂 Project Structure
 
 ```text
 InsuranceRAG/
-├── main.py              # FastAPI Server (Uploads & DB Management)
-├── processor.py         # Background Watcher & Vector Ingestion
-├── ai_service.py        # Modular AI Logic & RAG Chains
-├── inspector.ipynb      # Database & Metadata Verification Utility
-├── requirements.txt     # Python Dependencies
-├── .gitignore           # Excludes DB and Storage from Version Control
-└── storage/             # (Local Only) Landing zone for PDFs
-
-
-## 🚀 How to Run the System
-
-To get the system running, follow these steps in order. You will need **three** active terminal windows or background processes.
-
-### 1. Prerequisites
-* **Python 3.10+**
-* **Ollama**: [Download and Install Ollama](https://ollama.ai/)
-* **Local LLM Model**: Pull the required model via terminal:
-  ```bash
-  ollama pull llama3:8b-instruct-q2_K
-
-### 2. Environment Setup
-# Clone the repository
-git clone <your-repo-url>
-cd InsuranceRAG
-
-# Create and activate virtual environment
-python -m venv venv
-venv\Scripts\activate  # Windows
-# source venv/bin/activate # Linux/Mac
-
-# Install dependencies
-pip install -r requirements.txt
-
-### 3. Execution Order
-Step A: Start Ollama
-Ensure the Ollama application is running in your system tray so the local API (typically at http://localhost:11434) is accessible.
-
-Step B: Start the Document Processor (Terminal 1)
-The processor monitors the storage/ folder. It handles AI-based document classification, manages Windows file-locking, and indexes data into the vector database.
-
-Bash
-python processor.py
-Leave this running. It will log "FILE DETECTED" and "SUCCESS" as you upload documents.
-
-Step C: Start the FastAPI Server (Terminal 2)
-The FastAPI server handles the web interface for file uploads and AI queries.
-
-Bash
-uvicorn main:app --reload
-The API will be available at http://127.0.0.1:8000.
-
-
-🛠️ Testing the Workflow
-Access Swagger UI: Open http://127.0.0.1:8000/docs in your browser.
-
-Upload a Policy:
-
-Use POST /upload/policy.
-
-Enter a category (e.g., Motor).
-
-Upload a PDF.
-
-Check the Processor: Look at your Terminal 1. You should see the AI identifying the policy and moving it to the processed/ folder.
-
-Evaluate a Claim:
-
-Use POST /ask/evaluate-claim.
-
-Input the client_id and submission_date associated with a claim file.
-
-The AI will compare the claim context against the master policy.
-
-🗺️ Roadmap
-Phase 1: Local RAG with Ollama (Current).
-
-Phase 2: Cloud Migration (AWS S3 & Pinecone).
-
-Phase 3: Multi-Agent Orchestration for automated claim adjudication
+├── main.py              # FastAPI Server (Async Multi-Agent Endpoints)
+├── agent_orchestrator.py # LangGraph State Machine & Agent Nodes
+├── ai_service.py        # Modular AI Logic & Vector DB Collections
+├── processor.py         # Background Watcher & Semantic Ingestion
+├── local_db/            # Persistent ChromaDB storage
+├── storage/             # Landing zone for Policies and Claims PDFs
+└── requirements.txt     # Project Dependencies
