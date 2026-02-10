@@ -1,4 +1,5 @@
 import os
+import chromadb
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from pathlib import Path
@@ -15,7 +16,11 @@ from langchain_core.prompts import ChatPromptTemplate
 CHROMA_PATH = r"D:\pY\InsuranceRAG\local_db"
 router = APIRouter(tags=["AI Interaction"])
 
-# 2. Initialize Shared Components
+# 2. Initialize Chroma Client (Shared with main.py for Audit Queries)
+# This is what allows your preview flow to query by instance_id
+client = chromadb.PersistentClient(path=CHROMA_PATH)
+
+# 3. Initialize Shared AI Components
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 llm = OllamaLLM(
     model="llama3:8b-instruct-q2_K",
@@ -36,7 +41,13 @@ claims_db = Chroma(
     collection_name="claims_collection"
 )
 
-# 3. Request Schemas
+evaluations_db = Chroma(
+    persist_directory=CHROMA_PATH, 
+    embedding_function=embeddings, 
+    collection_name="evaluation_audit_log"
+)
+
+# 4. Request Schemas
 class QueryRequest(BaseModel):
     question: str
     client_id: str = "Company"

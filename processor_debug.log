@@ -1,0 +1,31 @@
+2026-02-09 22:40:07,194 - INFO - [SentenceTransformer.py:219] - Use pytorch device_name: cpu
+2026-02-09 22:40:07,194 - INFO - [SentenceTransformer.py:227] - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-02-09 22:40:11,296 - INFO - [posthog.py:22] - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-02-09 22:53:39,440 - INFO - [SentenceTransformer.py:219] - Use pytorch device_name: cpu
+2026-02-09 22:53:39,440 - INFO - [SentenceTransformer.py:227] - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-02-09 22:53:43,399 - INFO - [posthog.py:22] - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-02-09 23:02:37,052 - INFO - [SentenceTransformer.py:219] - Use pytorch device_name: cpu
+2026-02-09 23:02:37,052 - INFO - [SentenceTransformer.py:227] - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-02-09 23:02:41,090 - INFO - [posthog.py:22] - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-02-09 23:21:20,893 - INFO - [SentenceTransformer.py:219] - Use pytorch device_name: cpu
+2026-02-09 23:21:20,893 - INFO - [SentenceTransformer.py:227] - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-02-09 23:21:24,885 - INFO - [posthog.py:22] - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-02-09 23:22:03,310 - INFO - [processor.py:53] - FILE DETECTED: Membership Handbook.pdf
+2026-02-09 23:23:56,399 - INFO - [processor.py:53] - FILE DETECTED: TRAVEL_TC_HSBCUAE_EN.pdf
+2026-02-10 12:32:25,101 - INFO - [SentenceTransformer.py:219] - Use pytorch device_name: cpu
+2026-02-10 12:32:25,102 - INFO - [SentenceTransformer.py:227] - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-02-10 12:32:29,382 - INFO - [posthog.py:22] - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-02-10 12:35:08,477 - INFO - [processor.py:53] - FILE DETECTED: Membership Handbook.pdf
+2026-02-10 12:35:16,536 - INFO - [processor.py:53] - FILE DETECTED: Membership Handbook.pdf
+2026-02-10 12:35:26,654 - INFO - [processor.py:53] - FILE DETECTED: Membership Handbook.pdf
+2026-02-10 14:33:03,860 - INFO - [SentenceTransformer.py:219] - Use pytorch device_name: cpu
+2026-02-10 14:33:03,860 - INFO - [SentenceTransformer.py:227] - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-02-10 14:33:08,069 - INFO - [posthog.py:22] - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2026-02-10 14:33:19,923 - INFO - [processor.py:55] - FILE DETECTED: Motor Perfect T&C_UAE_EN.pdf
+2026-02-10 14:33:48,673 - INFO - [processor.py:55] - FILE DETECTED: Motor Perfect T&C_UAE_EN.pdf
+2026-02-10 14:33:58,768 - INFO - [processor.py:55] - FILE DETECTED: Motor Perfect T&C_UAE_EN.pdf
+2026-02-10 14:34:08,936 - INFO - [processor.py:55] - FILE DETECTED: Motor Perfect T&C_UAE_EN.pdf
+2026-02-10 14:34:19,163 - INFO - [processor.py:55] - FILE DETECTED: Motor Perfect T&C_UAE_EN.pdf
+2026-02-10 17:26:51,410 - INFO - [SentenceTransformer.py:219] - Use pytorch device_name: cpu
+2026-02-10 17:26:51,410 - INFO - [SentenceTransformer.py:227] - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-02-10 17:26:55,465 - INFO - [posthog.py:22] - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
